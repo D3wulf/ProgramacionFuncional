@@ -41,18 +41,52 @@ public class testProgramacionFuncional {
 		
 		
 		// prueba de con el reduce, coger los numeros y ejecutar la operacion restar
-		int a = numeros.stream().reduce(0, Operaciones::restar);
+		// int a = numeros.stream().reduce(0, Operaciones::restar);
 		
 		// Cogemos los numeros y los sumamos, si existe un valor, hace un print del mismo
 		numeros.stream().reduce((x,y)->{
 			return x+y;
 		}).ifPresent(System.out::println);
 		
+		// Cuenta la cantidad de nombres en la lista
+		//System.out.println(Nombres.stream().count());
+		
+		//Coge toda la lista con reduce y te concatena los nombres
+		//Nombres.stream().reduce(String::concat).ifPresent(System.out::println);
 		
 		
+		int a = buscarRepetidos(3);
+		System.out.println("Se ha repetido el numero " + a + " veces");
 		
+		
+			
 		
 
+	}
+	
+	//Método que busca numeros iguales a 3 y devuelve el numero de repeticiones
+	public static int buscarRepetidos(int numero) {
+		
+		return (int) numeros.stream().filter( resp-> {
+			
+			
+			return resp.equals(numero);
+		}).count();
+		
+	}
+	
+	//metodo que devuelve true o false si el nombre que se pasa por parámetro existe
+	public static boolean existeNombre(String nombre) {
+		
+		for(String item : Nombres) {
+			
+			if(item.equals(nombre)) {
+				return true;
+			}
+		}
+		return false;
+		
+		
 	}
 
 }
